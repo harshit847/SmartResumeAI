@@ -14,7 +14,7 @@ export default function JDMatchPage() {
 
   return (
     <>
-    <Box sx={{ width: 500, mx: "auto", mt: 10, p: 4, boxShadow: 3 }}>
+    <Box sx={{ width: 500, mx: "auto", mt: 10, p: 4, boxShadow: 3,bgcolor: "#fff" }}>
       <Typography variant="h5" mb={2}>Match Resume with Job</Typography>
       <TextField
         label="Paste Job Description"

@@ -33,7 +33,7 @@ export default function Footer() {
         </IconButton>
         <IconButton
           component={Link}
-          href="https://github.com/your_id"
+          href="https://github.com/harshit847"
           target="_blank"
           sx={{ color: "#a5e1d2" }}
         >
@@ -41,7 +41,7 @@ export default function Footer() {
         </IconButton>
         <IconButton
           component={Link}
-          href="mailto:your_email@gmail.com"
+          href="mailto:harshitrai331@gmail.com"
           target="_blank"
           sx={{ color: "#a5e1d2" }}
         >
