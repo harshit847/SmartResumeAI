@@ -4,7 +4,9 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes";
 import resumeRoutes from "./routes/resume.routes";
+import path from "path";
 
+const __dirname = path.resolve();
 dotenv.config();
 
 const app = express();
@@ -13,11 +15,16 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes); 
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 mongoose.connect(process.env.MONGO_URI!)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("Mongo Error: ", err));
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running on http://localhost:3001");
 });
