@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function SuggestionPage() {
   const navigate = useNavigate();
-
   return (
     <>
     

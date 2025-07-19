@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextField, Button, Typography, Box, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,8 +14,10 @@ export default function LoginPage() {
     try {
       const res = await API.post("/auth/login", { email, password });
       localStorage.setItem("token", res.data.token);
+      toast.success("Login successful!");
       navigate("/resume-form");
     } catch (err) {
+      toast.error("Login failed. Check your credentials.");
       if (err.response?.status === 404) {
         setError("User not found. Please register.");
       } else {

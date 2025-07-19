@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 export default function ResumeForm() {
   const [file, setFile] = useState(null);
@@ -24,9 +25,13 @@ export default function ResumeForm() {
       localStorage.setItem("resumeText", res.data.resume.extractedText);
       localStorage.setItem("resumeId", res.data.resume._id);
       localStorage.setItem("resumeSuggestions", res.data.resume.suggestions);
+      toast.success("Resume uploaded and analyzed successfully! 🎉");
+
       navigate("/suggestions");
     } catch (err) {
-      alert("Upload failed.");
+      console.log("Upload failed.");
+      toast.error("Upload failed. Please try again.");
+
     } finally {
       setLoading(false);
     }

@@ -7,10 +7,14 @@ import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} theme="colored" />
+
       <div
         style={{
           display: "flex",
@@ -22,7 +26,7 @@ function App() {
           {/* Public Route: Login (No Navbar or Footer) */}
           <Route path="/" element={<LoginPage />} />
 
-          {/* All Protected Routes wrapped with layout */}
+          {/* Protected Layout Routes */}
           <Route
             path="/*"
             element={

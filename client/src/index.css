@@ -29,8 +29,35 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-button:hover {
-  background-color: #0056b3;
+.Toastify__toast {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding-right: 2.5rem !important; 
 }
+
+.Toastify__toast-body {
+  text-align: left !important;
+  font-weight: 500;
+  word-break: break-word;
+  padding-right: 1rem;
+}
+
+.Toastify__close-button {
+  all: unset !important;
+  position: absolute !important;
+  top: 0.75rem;
+  right: 0.75rem;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 2;
+}
+
+.Toastify__close-button > svg {
+  fill: white !important;
+}
+
+

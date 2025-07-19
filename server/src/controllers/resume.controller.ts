@@ -17,9 +17,20 @@ export const analyzeResume = async (req: Request & { userId?: string }, res: Res
   try {
     const fileBuffer = req.file?.buffer;
     if (!fileBuffer) return res.status(400).json({ message: "No file uploaded" });
+    let extractedText = "";
 
-    const pdfData = await pdfParse(fileBuffer);
-    const extractedText = pdfData.text;
+    try {
+      const pdfData = await pdfParse(fileBuffer);
+      extractedText = pdfData.text;
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error("PDF parse error:", err.message);
+      } else {
+        console.error("PDF parse error:", err);
+      }
+
+      return res.status(400).json({ message: "Invalid or corrupted PDF file" });
+    }
 
     await ResumeModel.findOneAndDelete({ userId: req.userId });
 
@@ -78,8 +89,6 @@ export const downloadResumeReport = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error generating PDF" });
   }
 };
-
-
 export const matchResumeWithJD = async (
   req: Request & { userId?: string },
   res: Response
@@ -93,17 +102,21 @@ export const matchResumeWithJD = async (
     if (!resume)
       return res.status(404).json({ message: "No resume found for this user" });
 
-    let matchScore = similarity.compareTwoStrings(
-      resume.extractedText,
-      jobDescription
-    );
-    if (matchScore > 0 && matchScore < 0.25) {
-      matchScore = 0.50 + matchScore * 0.5;
-    }
-    const matchPercentage = Math.round(matchScore * 100);
+    const normalize = (text: string) =>
+      text.toLowerCase().replace(/[^a-z\s]/g, "").split(/\s+/).filter(Boolean);
+
+    const jdWords = [...new Set(normalize(jobDescription))]; 
+    const resumeWords = new Set(normalize(resume.extractedText)); 
+
+    const matchedWords = jdWords.filter(word => resumeWords.has(word));
+    const matchPercentage = jdWords.length > 0
+      ? Math.round((matchedWords.length / jdWords.length) * 100)
+      : 0;
 
     res.status(200).json({
-      message: "JD match calculated successfully",
+      message: "Word-based JD match calculated successfully",
+      jdWords,
+      matchedWords,
       matchPercentage,
     });
 

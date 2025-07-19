@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const [userName, setName] = useState("");
@@ -23,8 +24,12 @@ export default function RegisterPage() {
         email,
         password,
       });
+      toast.success("Registered successfully! Please login.");
+
       navigate("/");
     } catch (error) {
+      toast.error("Registration failed. Try again.");
+
       setError("Registration failed.");
     }
   };

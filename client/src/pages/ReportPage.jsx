@@ -2,6 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import { toast } from "react-toastify";
 
 export default function ReportPage() {
   const [pdfURL, setPdfURL] = useState("");
@@ -17,7 +18,10 @@ export default function ReportPage() {
         const file = new Blob([res.data], { type: "application/pdf" });
         const fileURL = URL.createObjectURL(file);
         setPdfURL(fileURL);
+        toast.success("Report downloaded!");
       } catch (err) {
+        toast.error("Failed to download report.");
+
         console.error("Error fetching report:", err);
       }
     };
@@ -34,43 +38,55 @@ export default function ReportPage() {
 
   return (
     <>
-    
-    <Box sx={{ textAlign: "center", mt: 6, px: 4 }}>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
-        <Button variant="outlined" sx={{width:400, mr:67}} onClick={() => navigate("/match")}>
-          Match with JD
+
+      <Box sx={{ textAlign: "center", mt: 6, px: 4 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+          <Button
+            variant="outlined"
+            sx={{
+              width: 400,
+              backgroundColor: "#017cffff",
+              color: "#fff",
+              border: "none",
+              "&:hover": {
+                backgroundColor: "#0c5db4ff",
+              },
+            }}
+            onClick={() => navigate("/match")}
+          >
+            Match with JD
+          </Button>
+        </Box>
+
+        <Typography variant="h5" mb={2}>
+          Resume Report
+        </Typography>
+
+        {pdfURL && (
+          <iframe
+            src={pdfURL}
+            title="PDF Preview"
+            style={{
+              width: "100%",
+              maxWidth: "800px",
+              height: "500px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+            }}
+          ></iframe>
+        )}
+
+        <br />
+
+        <Button
+          variant="contained"
+          sx={{ mt: 2, mb: 2, width: 400 }}
+          onClick={handleDownload}
+          disabled={!pdfURL}
+        >
+          Download PDF
         </Button>
       </Box>
-
-      <Typography variant="h5" mb={2}>
-        Resume Report
-      </Typography>
-
-      {pdfURL && (
-        <iframe
-          src={pdfURL}
-          title="PDF Preview"
-          style={{
-            width: "100%",
-            maxWidth: "800px",
-            height: "500px",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-          }}
-        ></iframe>
-      )}
-
-      <br />
-
-      <Button
-        variant="contained"
-        sx={{ mt: 2 ,mb:2, width:400 }}
-        onClick={handleDownload}
-        disabled={!pdfURL}
-      >
-        Download PDF
-      </Button>
-    </Box>
     </>
   );
 }
