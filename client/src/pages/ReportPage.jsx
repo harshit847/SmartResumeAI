@@ -26,7 +26,7 @@ export default function ReportPage() {
       }
     };
 
-    if (resumeId) fetchReport();
+    fetchReport();
   }, [resumeId]);
 
   const handleDownload = () => {
