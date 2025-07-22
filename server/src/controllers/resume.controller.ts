@@ -73,6 +73,7 @@ export const downloadResumeReport = async (req: Request, res: Response) => {
 
     if (!resume) return res.status(404).json({ message: "Resume not found" });
 
+    
     const name = "Harshit Rai";
     const email = "harshitrai331@gmail.com";
     const html = getResumeReportHTML(name, email, resume.score, resume.breakdown, resume.suggestions);
