@@ -28,6 +28,7 @@
     "pdf-parse": "^1.1.1",
     "puppeteer": "^24.14.0",
     "string-similarity": "^4.0.4",
+    
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
@@ -37,6 +38,7 @@
     "@types/node": "^24.0.12",
     "@types/pdf-parse": "^1.1.5",
     "@types/string-similarity": "^4.0.2",
+
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   },
