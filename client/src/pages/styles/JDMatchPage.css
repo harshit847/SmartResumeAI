@@ -1,0 +1,59 @@
+/* src/styles/JDMatchPage.css */
+
+.jdmatch-container {
+  width: 100%;
+  max-width: 520px;
+  margin: 8rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.jdmatch-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 1.5rem;
+}
+
+.jdmatch-textarea {
+  width: 93.5%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  outline: none;
+  margin-bottom: 1.2rem;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.jdmatch-textarea:focus {
+  border-color: #0f62fe;
+}
+
+.jdmatch-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #0f62fe;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.jdmatch-btn:hover {
+  background-color: #004ce2;
+}
+
+.jdmatch-result {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}

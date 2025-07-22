@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { TextField, Button, Typography, Box, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import API from "../services/api";
+import API from "../../../services/api";
 import { toast } from "react-toastify";
+import "./Login.css"; // custom CSS
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -27,57 +27,37 @@ export default function LoginPage() {
   };
 
   return (
-    <Box
-      sx={{
-        width: 400,
-        margin: "auto",
-        marginTop: 10,
-        padding: 4,
-        borderRadius: 2,
-        boxShadow: 3,
-        backgroundColor: "#fff",
-      }}
-    >
-      <Typography variant="h5" textAlign="center" mb={2}>
-        Login
-      </Typography>
+    <div className="login-container">
+      <h2 className="login-heading">Login</h2>
 
-      <TextField
-        fullWidth
-        label="Email"
-        margin="normal"
+      <input
+        type="email"
+        placeholder="Email"
+        className="login-input"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <TextField
-        fullWidth
-        label="Password"
+
+      <input
         type="password"
-        margin="normal"
+        placeholder="Password"
+        className="login-input"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button
-        variant="contained"
-        fullWidth
-        sx={{ mt: 2 }}
-        onClick={handleLogin}
-      >
+
+      <button className="login-btn" onClick={handleLogin}>
         Login
-      </Button>
+      </button>
 
-      {error && (
-        <Typography color="error" mt={2}>
-          {error}
-        </Typography>
-      )}
+      {error && <p className="login-error">{error}</p>}
 
-      <Typography variant="body2" mt={2} textAlign="center">
+      <p className="login-footer">
         Not registered?{" "}
-        <Link href="/register-page" underline="hover">
+        <span className="login-link" onClick={() => navigate("/register-page")}>
           Sign up
-        </Link>
-      </Typography>
-    </Box>
+        </span>
+      </p>
+    </div>
   );
 }

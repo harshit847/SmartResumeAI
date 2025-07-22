@@ -1,14 +1,10 @@
 import { useState } from "react";
-import {
-  Button,
-  Typography,
-  Box,
-  Input,
-  CircularProgress
-} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import { toast } from "react-toastify";
+import "../pages/styles/ResumeForm.css";
+import { TypeAnimation } from 'react-type-animation';
+
 
 export default function ResumeForm() {
   const [file, setFile] = useState(null);
@@ -20,18 +16,17 @@ export default function ResumeForm() {
     const formData = new FormData();
     formData.append("resume", file);
     setLoading(true);
+
     try {
       const res = await API.post("/resume/upload", formData);
       localStorage.setItem("resumeText", res.data.resume.extractedText);
       localStorage.setItem("resumeId", res.data.resume._id);
       localStorage.setItem("resumeSuggestions", res.data.resume.suggestions);
       toast.success("Resume uploaded and analyzed successfully! 🎉");
-
       navigate("/suggestions");
     } catch (err) {
-      console.log("Upload failed.");
+      console.error("Upload failed.");
       toast.error("Upload failed. Please try again.");
-
     } finally {
       setLoading(false);
     }
@@ -39,37 +34,40 @@ export default function ResumeForm() {
 
   return (
     <>
-    
-    <Box
-      sx={{
-        width: 400,
-        margin: "auto",
-        marginTop: 10,
-        padding: 4,
-        borderRadius: 2,
-        boxShadow: 3,
-        backgroundColor: "#fff",
-        textAlign: "center",
-      }}
-    >
-      <Typography variant="h5" mb={2}>
-        Upload Resume
-      </Typography>
-      <Input
-        type="file"
-        onChange={(e) => setFile(e.target.files[0])}
-        fullWidth
-        sx={{ mb: 2 }}
+      <TypeAnimation
+        sequence={[
+          "Upload Resume for Suggestions!✨",
+          2500,
+          "Get AI-powered Resume Insights!🔥",
+          2500,
+          "Make Your Resume Stand Out!🎯",
+          2500,
+          "",
+        ]}
+        wrapper="h2"
+        cursor={true}
+        repeat={Infinity}
+        className="resume-type-heading"
       />
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={handleUpload}
-        disabled={loading}
-      >
-        {loading ? <CircularProgress size={24} color="inherit" /> : "Submit"}
-      </Button>
-    </Box>
+      <div className="resume-upload-container">
+
+        <h2 className="resume-heading">Upload Resume</h2>
+
+        <input
+          type="file"
+          className="resume-input"
+          onChange={(e) => setFile(e.target.files?.[0] || null)}
+          accept=".pdf,.doc,.docx"
+        />
+
+        <button
+          className="resume-submit-btn"
+          onClick={handleUpload}
+          disabled={loading}
+        >
+          {loading ? "Uploading..." : "Submit"}
+        </button>
+      </div>
     </>
   );
 }

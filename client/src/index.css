@@ -1,63 +1,17 @@
 body {
-  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #e96443, #904e95);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(135deg, #e96443, #904e95);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  background-repeat: repeat;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  color: #1f1f1f;
 }
-
-.container {
-  max-width: 500px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-
-input, button {
-  display: block;
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.Toastify__toast {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  padding-right: 2.5rem !important; 
-}
-
-.Toastify__toast-body {
-  text-align: left !important;
-  font-weight: 500;
-  word-break: break-word;
-  padding-right: 1rem;
-}
-
-.Toastify__close-button {
-  all: unset !important;
-  position: absolute !important;
-  top: 0.75rem;
-  right: 0.75rem;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 2;
-}
-
-.Toastify__close-button > svg {
-  fill: white !important;
-}
-
-

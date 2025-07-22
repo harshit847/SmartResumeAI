@@ -3,12 +3,13 @@ import ResumeForm from "./pages/ResumeForm";
 import SuggestionPage from "./pages/SuggestionPage";
 import ReportPage from "./pages/ReportPage";
 import JDMatchPage from "./pages/JDMatchPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/Auth/Login/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RegisterPage from "./pages/Auth/Register/RegisterPage";
 
 function App() {
   return (
@@ -23,10 +24,9 @@ function App() {
         }}
       >
         <Routes>
-          {/* Public Route: Login (No Navbar or Footer) */}
           <Route path="/" element={<LoginPage />} />
+          <Route path="/register-page" element={<RegisterPage />} />
 
-          {/* Protected Layout Routes */}
           <Route
             path="/*"
             element={

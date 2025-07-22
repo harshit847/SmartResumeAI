@@ -1,8 +1,9 @@
-import { Box, Typography, Button } from "@mui/material";
+// src/pages/ReportPage.tsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import { toast } from "react-toastify";
+import "../pages/styles/ReportPage.css";
 
 export default function ReportPage() {
   const [pdfURL, setPdfURL] = useState("");
@@ -21,7 +22,6 @@ export default function ReportPage() {
         toast.success("Report downloaded!");
       } catch (err) {
         toast.error("Failed to download report.");
-
         console.error("Error fetching report:", err);
       }
     };
@@ -37,56 +37,28 @@ export default function ReportPage() {
   };
 
   return (
-    <>
+    <div className="report-container">
+      <button className="report-match-btn" onClick={() => navigate("/match")}>
+        Match with JD
+      </button>
 
-      <Box sx={{ textAlign: "center", mt: 6, px: 4 }}>
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
-          <Button
-            variant="outlined"
-            sx={{
-              width: 400,
-              backgroundColor: "#017cffff",
-              color: "#fff",
-              border: "none",
-              "&:hover": {
-                backgroundColor: "#0c5db4ff",
-              },
-            }}
-            onClick={() => navigate("/match")}
-          >
-            Match with JD
-          </Button>
-        </Box>
+      <h2 className="report-heading">Resume Report</h2>
 
-        <Typography variant="h5" mb={2}>
-          Resume Report
-        </Typography>
+      {pdfURL && (
+        <iframe
+          src={pdfURL}
+          title="PDF Preview"
+          className="report-pdf-viewer"
+        ></iframe>
+      )}
 
-        {pdfURL && (
-          <iframe
-            src={pdfURL}
-            title="PDF Preview"
-            style={{
-              width: "100%",
-              maxWidth: "800px",
-              height: "500px",
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-            }}
-          ></iframe>
-        )}
-
-        <br />
-
-        <Button
-          variant="contained"
-          sx={{ mt: 2, mb: 2, width: 400 }}
-          onClick={handleDownload}
-          disabled={!pdfURL}
-        >
-          Download PDF
-        </Button>
-      </Box>
-    </>
+      <button
+        className="report-download-btn"
+        onClick={handleDownload}
+        disabled={!pdfURL}
+      >
+        Download PDF
+      </button>
+    </div>
   );
 }

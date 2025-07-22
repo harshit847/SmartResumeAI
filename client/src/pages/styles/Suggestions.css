@@ -1,0 +1,41 @@
+/* src/styles/SuggestionPage.css */
+
+.suggestion-box {
+  width: 100%;
+  max-width: 480px;
+  margin: 8rem auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.suggestion-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin-bottom: 1rem;
+}
+
+.suggestion-subtext {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.suggestion-report-btn {
+  padding: 0.9rem 1.5rem;
+  background-color: #0f62fe;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.suggestion-report-btn:hover {
+  background-color: #004ce2;
+}

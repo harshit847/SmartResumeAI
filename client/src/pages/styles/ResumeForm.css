@@ -1,0 +1,74 @@
+
+.resume-upload-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 8rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.resume-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 1.5rem;
+}
+
+.resume-input {
+  width: 93%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.resume-input:hover,
+.resume-input:focus {
+  border-color: #017cff;
+  outline: none;
+}
+
+.resume-submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #0f62fe;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.resume-submit-btn:hover {
+  background-color: #004ce2;
+}
+
+.resume-submit-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+.resume-type-heading {
+  font-family: "Verdana", "Geneva", "Tahoma", sans-serif;
+  text-align: center;
+  padding: 4rem 1rem 1.5rem;
+  font-size: 2.2rem; 
+  font-weight: 700;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #111;
+}
+@media (max-width: 600px) {
+  .resume-type-heading {
+    font-size: 1.5rem;
+    padding: 2rem 1rem;
+  }
+}
