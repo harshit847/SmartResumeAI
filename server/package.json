@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "postinstall": "puppeteer install"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^4.17.23",
+    "@types/html-pdf-node": "^1.0.2",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.96",
     "@types/multer": "^2.0.0",
