@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import authRoutes from "./src/routes/auth.routes";
-import resumeRoutes from "./src/routes/resume.routes";
+import authRoutes from "./routes/auth.routes";
+import resumeRoutes from "./routes/resume.routes";
 
 dotenv.config();
 
