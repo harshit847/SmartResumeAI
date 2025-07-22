@@ -2,21 +2,15 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import authRoutes from "./routes/auth.routes";
-import resumeRoutes from "./routes/resume.routes";
-import path from "path";
+import authRoutes from "./src/routes/auth.routes";
+import resumeRoutes from "./src/routes/resume.routes";
 
 dotenv.config();
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "client-dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client-dist", "index.html"));
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes); 
