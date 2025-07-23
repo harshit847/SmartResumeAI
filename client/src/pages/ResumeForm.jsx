@@ -24,7 +24,6 @@ export default function ResumeForm() {
       localStorage.setItem("resumeSuggestions", res.data.resume.suggestions);
       toast.success("Resume uploaded and analyzed successfully! 🎉");
       navigate("/suggestions");
-      console.log("Download resumeId:", id);
     } catch (err) {
       console.error("Upload failed.");
       toast.error("Upload failed. Please try again.");

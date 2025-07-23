@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes";
 import resumeRoutes from "./routes/resume.routes";
 
+
+
 dotenv.config();
 
 const app = express();
@@ -14,6 +16,16 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes); 
+
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
+app.get("/api", (req, res) => {
+  res.json({ message: "API is working fine!" });
+});
 
 mongoose.connect(process.env.MONGO_URI!)
   .then(() => console.log("MongoDB connected"))
