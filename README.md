@@ -8,7 +8,7 @@ SmartResumeAI is an AI-powered resume analyzer that compares your resume with a 
 
 - 🧾 Upload your resume (PDF)
 - 📝 Paste any job description (JD)
-- 🤖 OpenAI-powered semantic matching
+- 🤖 Cohere AI-powered semantic matching
 - 📊 Get match percentage and feedback instantly
 - ⚡ Fast & simple interface
 - 🔐 Secure local resume processing
