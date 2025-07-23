@@ -27,7 +27,7 @@ SmartResumeAI is an AI-powered resume analyzer that compares your resume with a 
 
 ## 📸 Screenshots
 
-![Uploading Screenshot 2025-07-23 140515.png…]()
+<img width="1919" height="865" alt="Screenshot 2025-07-23 140515" src="https://github.com/user-attachments/assets/b6073dce-2967-4530-afb8-5c3b5d8b64ad" />
 
 
 ## 🛠️ How to Run Locally
