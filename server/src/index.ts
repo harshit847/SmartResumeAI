@@ -22,15 +22,14 @@ app.use(
   })
 );
 
-// ✅ Add this route to test if backend is live
-app.get("/api", (req, res) => {
-  res.json({ message: "API is working fine!" });
-});
-
 mongoose
   .connect(process.env.MONGO_URI!)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("Mongo Error: ", err));
+
+app.get("/api", (req, res) => {
+  res.json({ message: "API is working fine!" });
+});
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running on http://localhost:3001");
