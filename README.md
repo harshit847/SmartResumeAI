@@ -20,8 +20,8 @@ SmartResumeAI is an AI-powered resume analyzer that compares your resume with a 
 | Frontend         | Backend           | AI & Tools         |
 |------------------|-------------------|--------------------|
 | React.js         | Node.js + Express | OpenAI GPT API     |
-| TypeScript       | MongoDB           | Puppeteer (PDF to text) |
-| Tailwind CSS     |                   | Dotenv, CORS       |
+| TypeScript       | MongoDB           | Puppeteer(PDF to text)|
+| Vanilla & MUI CSS|                   | Dotenv, CORS       |
 
 ---
 
