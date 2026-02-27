@@ -46,7 +46,7 @@ const analyzeResume = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         }
         yield resume_model_1.default.findOneAndDelete({ userId: req.userId });
         const response = yield cohere.chat({
-            model: "command-r",
+            model: "command",
             message: `You are an expert resume reviewer. Analyze the following resume content and give resume improvement suggestions in clear numbered format (1., 2., 3., ...). 
 Make sure each point is separated by a new line. No paragraph merging.\n\n${extractedText}`,
         });

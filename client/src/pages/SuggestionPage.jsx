@@ -1,10 +1,29 @@
-// src/pages/SuggestionPage.tsx
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../services/api";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "../pages/styles/Suggestions.css";
 import { TypeAnimation } from "react-type-animation";
 
 export default function SuggestionPage() {
   const navigate = useNavigate();
+  const resumeId = localStorage.getItem("resumeId");
+
+  const [suggestions, setSuggestions] = useState("");
+
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      try {
+        const res = await API.get(`/resume/${resumeId}`);
+        setSuggestions(res.data.resume.suggestions);
+      } catch (err) {
+        console.error("Error fetching suggestions:", err);
+      }
+    };
+
+    fetchSuggestions();
+  }, [resumeId]);
 
   return (
     <>
@@ -23,9 +42,19 @@ export default function SuggestionPage() {
         repeat={Infinity}
         className="resume-type-heading"
       />
+
       <div className="suggestion-box">
         <h2 className="suggestion-title">Resume Suggestions</h2>
-        <p className="suggestion-subtext">Your resume has been analyzed.</p>
+        <p className="suggestion-subtext">
+          Your resume has been analyzed.
+        </p>
+
+        {/* 🔥 MARKDOWN RENDER HERE */}
+        <div className="suggestion-content">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {suggestions}
+          </ReactMarkdown>
+        </div>
 
         <button
           className="suggestion-report-btn"
